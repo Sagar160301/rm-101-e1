@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import styles from "./taskApp.module.css";
 
@@ -40,15 +40,54 @@ const TaskApp = () => {
       count: 200,
     },
   ]);
-  useEffect(() => {
-    // getTask();
-  }, []);
+
+  const check = (id) => {
+    let newArray = [];
+    for (let i = 0; i < allTask.length; i++) {
+      if (allTask[i].id === id) {
+        allTask[i].done = !allTask[i].done;
+      }
+      // console.log(allTask[i].count);
+      newArray.push(allTask[i]);
+    }
+    setAllTask(newArray);
+  };
+
+  const addNewTask = (name) => {
+    let count = 0;
+    for (let i = 0; i < allTask.length; i++) {
+      if (allTask[i].text !== name) {
+        count++;
+      }
+    }
+    if (count === allTask.length) {
+      let payload = {
+        text: name,
+        done: false,
+        count: 1,
+        id: allTask.length,
+      };
+      setAllTask([...allTask, payload]);
+    }
+  };
+
+  const deleteTask = (id) => {
+    let newArray = [];
+    for (let i = 0; i < allTask.length; i++) {
+      if (allTask[i].id === id) {
+        continue;
+      }
+      // console.log(allTask[i].count);
+      newArray.push(allTask[i]);
+    }
+    setAllTask(newArray);
+  };
 
   const counter = (count, id) => {
     console.log(count);
     let newArray = [];
     for (let i = 0; i < allTask.length; i++) {
-      if (allTask[i].id == id) {
+      if (allTask[i].id === id) {
         allTask[i].count = allTask[i].count + count;
       }
       // console.log(allTask[i].count);
@@ -61,8 +100,13 @@ const TaskApp = () => {
     <div data-testid="task-app" className={styles.taskApp}>
       {/* Header */}
       <TaskHeader tasks={allTask} />
-      <AddTask />
-      <Tasks tasks={allTask} counter={counter} />
+      <AddTask addNewTask={addNewTask} />
+      <Tasks
+        tasks={allTask}
+        counter={counter}
+        check={check}
+        deleteTask={deleteTask}
+      />
     </div>
   );
 };

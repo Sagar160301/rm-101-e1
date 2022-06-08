@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./tasks.module.css";
 import { Task } from "../Task/index";
 
-const Tasks = ({ tasks, counter }) => {
+const Tasks = ({ tasks, counter, check, deleteTask }) => {
   // NOTE: do not delete `data-testid` key value pair
 
   return (
@@ -10,7 +10,13 @@ const Tasks = ({ tasks, counter }) => {
       <ul data-testid="tasks" className={styles.tasks}>
         {/* Task List */}
         {tasks.map((el) => (
-          <Task el={el} key={el.id} counter={counter} />
+          <Task
+            el={el}
+            key={el.id}
+            counter={counter}
+            check={check}
+            deleteTask={deleteTask}
+          />
         ))}
       </ul>
       <div data-testid="tasks-empty" className={styles.empty}>

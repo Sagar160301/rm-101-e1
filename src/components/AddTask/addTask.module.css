@@ -1,3 +1,18 @@
 .addTask {
   /* Sample */
 }
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px auto;
+  width: 90%;
+}
+.input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 10px 0px;
+  border-bottom: 1px solid grey;
+}

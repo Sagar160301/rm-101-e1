@@ -1,3 +1,13 @@
 .taskHeader {
   /* Sample */
+  background-color: #3c8982;
+  width: 100%;
+  color: white;
+  text-align: center;
+  padding: 5px;
+}
+
+.b {
+  margin: 5px;
+  font-size: 1rem;
 }

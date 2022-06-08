@@ -20,6 +20,7 @@ const Task = ({ el, counter, check, deleteTask }) => {
       <Counter count={el.count} counter={counter} id={el.id} />
       <button
         data-testid="task-remove-button"
+        className={styles.hover}
         onClick={() => {
           deleteTask(el.id);
         }}

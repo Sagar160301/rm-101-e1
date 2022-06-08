@@ -16,8 +16,14 @@ const TaskHeader = ({ tasks }) => {
     <div data-testid="task-header" className={styles.taskHeader}>
       <h1>Todo List</h1>
       You have
-      <b data-testid="header-remaining-task">{unCompletedTask}</b>of
-      <b data-testid="header-total-task">{totalTask}</b> Taks remaining
+      <b data-testid="header-remaining-task" className={styles.b}>
+        {unCompletedTask}
+      </b>
+      of
+      <b data-testid="header-total-task" className={styles.b}>
+        {totalTask}
+      </b>{" "}
+      Taks remaining
     </div>
   );
 };
